@@ -13,7 +13,7 @@ void IssueCreator::promptIssueStatus() {
     int result = 0;
 
     do {
-        std::cout << "Enter status (1-6): ";
+        std::cout << "Enter status (1-6): " << std::endl;
         std::cout << "\t1. Requirements" << std::endl;
         std::cout << "\t2. Backlog" << std::endl;
         std::cout << "\t3. In Development" << std::endl;
@@ -36,7 +36,7 @@ void IssueCreator::promptIssueStatus() {
             std::cout << "Invalid input. Please enter a number between 1 and 6." << std::endl;
             continue;
         }
-    } while (result < 0 || result > 6);
+    } while (result <= 0 || result > 6);
 
     this->status = (IssueStatus)result;
 }
@@ -46,7 +46,7 @@ void IssueCreator::promptIssueType() {
     int result = 0;
 
     do {
-        std::cout << "Enter type (1-3): ";
+        std::cout << "Enter type (1-3): " << std::endl;
         std::cout << "\t1. Story" << std::endl;
         std::cout << "\t2. Bug" << std::endl;
         std::cout << "\t3. Epic" << std::endl;
@@ -67,7 +67,7 @@ void IssueCreator::promptIssueType() {
             continue;
         }
 
-    } while (result < 0 || result > 3);
+    } while (result <= 0 || result > 3);
 
     this->type = (IssueType)result;
 }
