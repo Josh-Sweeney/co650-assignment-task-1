@@ -1,5 +1,9 @@
 #pragma once
 
+#include "../data/issue.h"
+#include "../data/story.h"
+#include "../data/bug.h"
+#include "../data/epic.h"
 #include "../data/issue-status.h"
 #include "../data/issue-type.h"
 
@@ -18,5 +22,5 @@ class IssueCreator {
     public:
         IssueCreator();
 
-        void createIssue();
+        Issue createIssue();
 };

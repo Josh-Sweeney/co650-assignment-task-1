@@ -69,10 +69,12 @@ void IssueCreator::promptIssueType() {
 
     } while (result <= 0 || result > 3);
 
+    result = std::stoi(cinResult);
+
     this->type = (IssueType)result;
 }
 
-void IssueCreator::createIssue() {
+Issue IssueCreator::createIssue() {
     std::cout << "Enter title: ";
     std::cin >> this->title;
 
@@ -81,4 +83,14 @@ void IssueCreator::createIssue() {
 
     promptIssueStatus();
     promptIssueType();
+
+    if (this->type == IssueType::bug) {
+        return Bug(this->title, this->description, this->status);
+    } else if (this->type == IssueType::story) {
+        return Story(this->title, this->description, this->status);
+    } else if (this->type == IssueType::epic) {
+        return Epic(this->title, this->description, this->status);
+    }
+
+    // TODO: Throw exception
 };

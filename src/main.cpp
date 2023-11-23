@@ -5,6 +5,9 @@
 
 int main() {
     IssueCreator creator;
-    creator.createIssue();
+    Issue issue = creator.createIssue();
+
+    issue.print();
+
     return 0;
 }

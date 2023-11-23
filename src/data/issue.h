@@ -5,13 +5,20 @@
 #include "issue-status.h"
 #include "issue-type.h"
 
-class Issue {
-    public:
-        std::string title;
-        std::string description;
-        IssueStatus status;
-        IssueType type;
+class Issue
+{
+public:
+    void print();
 
-    protected:
-        Issue(std::string title, std::string description, IssueStatus status, IssueType type);
+protected:
+    std::string title;
+    std::string description;
+    IssueStatus status;
+    IssueType type;
+
+    // TODO: Consider if this is appropriate here
+    static std::string statusToString(IssueStatus status);
+    static std::string typeToString(IssueType type);
+
+    Issue(std::string title, std::string description, IssueStatus status, IssueType type);
 };
