@@ -6,4 +6,16 @@ project(Project)
 add_executable(
     Project
     src/main.cpp
+    src/data/bug.cpp
+    src/data/bug.h
+    src/data/epic.cpp
+    src/data/epic.h
+    src/data/issue-status.h
+    src/data/issue-type.h
+    src/data/issue.cpp
+    src/data/issue.h
+    src/data/story.cpp
+    src/data/story.h
+    src/helpers/issue-creator.cpp
+    src/helpers/issue-creator.h
 )
