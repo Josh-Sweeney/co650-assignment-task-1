@@ -8,14 +8,14 @@
 class Issue
 {
 public:
-    void print();
+    virtual void print();
 
 protected:
     std::string title;
     std::string description;
     IssueStatus status;
     IssueType type;
-
+    
     Issue(std::string title, std::string description, IssueStatus status, IssueType type);
 
 private:

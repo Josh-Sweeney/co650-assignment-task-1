@@ -7,4 +7,6 @@
 class Epic : public Issue {
     public:
         Epic(std::string title, std::string description, IssueStatus status);
+
+        void print() override;
 };

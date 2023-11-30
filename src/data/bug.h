@@ -7,4 +7,6 @@
 class Bug : public Issue {
     public:
         Bug(std::string title, std::string description, IssueStatus status);
+        
+        void print() override;
 };
