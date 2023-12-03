@@ -6,7 +6,9 @@ IssueRepository::IssueRepository()
     this->size = 0;
 
     addIssue(new Bug("Bug 1", "Bug 1 description", IssueStatus::backlog));
+    addIssue(new Bug("Bug 2", "This is a closed bug", IssueStatus::developed));
     addIssue(new Story("Story 1", "Story 1 description", IssueStatus::inDevelopment));
+    addIssue(new Story("Story 2", "This is a closed story", IssueStatus::released));
     addIssue(new Epic("Epic 1", "Epic 1 description", IssueStatus::developed));
 }
 
@@ -15,7 +17,8 @@ Issue **IssueRepository::getIssues()
     return this->issues;
 }
 
-Issue **IssueRepository::getIssues(bool (*predicate)(Issue *))
+// Filter issues by predicate and set size to the number of issues that match the predicate
+Issue **IssueRepository::getIssues(int& size, bool (*predicate)(Issue *))
 {
     Issue **result = new Issue *[this->size];
     int resultIndex = 0;
@@ -28,6 +31,8 @@ Issue **IssueRepository::getIssues(bool (*predicate)(Issue *))
             resultIndex++;
         }
     }
+
+    size = resultIndex;
 
     return result;
 }

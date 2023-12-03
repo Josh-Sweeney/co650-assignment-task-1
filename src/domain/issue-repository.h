@@ -17,7 +17,7 @@ class IssueRepository {
 
     Issue** getIssues();
 
-    Issue** getIssues(bool (*predicate)(Issue*));
+    Issue** getIssues(int& size, bool (*predicate)(Issue *));
 
     int getSize();
 

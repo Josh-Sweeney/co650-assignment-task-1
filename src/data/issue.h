@@ -10,6 +10,11 @@ class Issue
 public:
     virtual void print();
 
+    std::string getTitle();
+    std::string getDescription();
+    IssueStatus getStatus();
+    IssueType getType();
+
 protected:
     std::string title;
     std::string description;
