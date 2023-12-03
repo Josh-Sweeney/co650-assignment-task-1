@@ -22,5 +22,5 @@ class IssueCreator {
     public:
         IssueCreator();
 
-        std::shared_ptr<Issue> createIssue();
+        Issue* createIssue();
 };

@@ -16,6 +16,8 @@ add_executable(
     src/data/issue.h
     src/data/story.cpp
     src/data/story.h
+    src/domain/issue-repository.h
+    src/domain/issue-repository.cpp
     src/helpers/issue-creator.cpp
     src/helpers/issue-creator.h
 )

@@ -74,7 +74,7 @@ void IssueCreator::promptIssueType() {
     this->type = (IssueType)result;
 }
 
-std::shared_ptr<Issue> IssueCreator::createIssue() {
+Issue* IssueCreator::createIssue() {
     std::cout << "Enter title: ";
     std::cin >> this->title;
 
@@ -85,11 +85,11 @@ std::shared_ptr<Issue> IssueCreator::createIssue() {
     promptIssueType();
 
     if (this->type == IssueType::bug) {
-        return std::make_shared<Bug>(this->title, this->description, this->status);
+        return &Bug(this->title, this->description, this->status);
     } else if (this->type == IssueType::story) {
-        return std::make_shared<Story>(this->title, this->description, this->status);
+        return &Story(this->title, this->description, this->status);
     } else if (this->type == IssueType::epic) {
-        return std::make_shared<Epic>(this->title, this->description, this->status);
+        return &Epic(this->title, this->description, this->status);
     }
 
     // TODO: Throw exception
