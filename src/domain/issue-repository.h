@@ -26,6 +26,14 @@ class IssueRepository {
     // issues array with some dummy data.
     IssueRepository();
 
+    // 1. Abstraction - The getIssue method abstracts away the code required
+    // to get an issue from the issues array.
+    // 2. Encapsulation - The issues array is private and can only be accessed
+    // through either the getIssue or getIssues methods.
+    // 9. Pointers - The return type of the getIssue method is a pointer to an
+    // Issue object.
+    Issue* getIssue(int index);
+
     // 1. Abstraction - The getIssues method abstracts away the code required
     // to filter the issues array.
     // 2. Encapsulation - The issues array is private and can only be accessed
@@ -65,4 +73,16 @@ class IssueRepository {
     // 5. Overloading - The removeIssue method is overloaded so that it can be
     // called with an index.
     void removeIssue(int index);
+
+    // 1. Abstraction - The removeIssues method abstracts away the code required
+    // to remove issues from the issues array based on a predicate.
+    // 2. Encapsulation - The issues array is private and can only be accessed
+    // through the removeIssues method.
+    // 9. Pointers - The size parameter is a pointer so that the filtered size
+    // can be returned through the parameter.
+    // 10. Functional Pointers - A functional pointer is used here so that the
+    // issues can be filtered by a predicate. The predicate is a function is
+    // ran for each item in the issues array and returns true or false . If the
+    // predicate returns true, the issue is removed from the issues array.
+    void removeIssues(bool (*predicate)(Issue *));
 };
