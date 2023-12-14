@@ -44,7 +44,7 @@ class IssueRepository {
     // issues can be filtered by a predicate. The predicate is a function is
     // ran for each item in the issues array and returns true or false . If the
     // predicate returns true, the issue is added to the result array.
-    Issue** getIssues(int& size, bool (*predicate)(Issue *));
+    Issue** getIssues(int& filteredSize, bool (*predicate)(Issue *));
 
     // 2. Encapsulation - The size property is private and can only be accessed
     // through the getSize method.

@@ -36,7 +36,7 @@ Issue **IssueRepository::getIssues()
 // 10. Functional Pointers - A functional pointer is used here so that the 
 // issues can be filtered by a predicate. The predicate is a function is
 // ran for each item in the issues array and returns true or false . If the
-Issue **IssueRepository::getIssues(int& size, bool (*predicate)(Issue *))
+Issue **IssueRepository::getIssues(int& filteredSize, bool (*predicate)(Issue *))
 {
     Issue **result = new Issue *[this->size];
     int resultIndex = 0;
@@ -50,7 +50,7 @@ Issue **IssueRepository::getIssues(int& size, bool (*predicate)(Issue *))
         }
     }
 
-    size = resultIndex;
+    filteredSize = resultIndex;
 
     return result;
 }
