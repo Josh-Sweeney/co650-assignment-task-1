@@ -1,6 +1,8 @@
 #include "issue-creator.h"
 #include <string>
 
+// 8. Constructors - The IssueCreator constructor is used to initialize the
+// title, description, status and type properties.
 IssueCreator::IssueCreator() {
     this->title = "";
     this->description = "";
@@ -8,6 +10,9 @@ IssueCreator::IssueCreator() {
     this->type = IssueType::none;
 }
 
+// 1. Abstraction - The promptIssueStatus method abstracts the logic for
+// displaying the issue status options, prompting the user to select
+// an option, parsing the result and error handling.
 void IssueCreator::promptIssueStatus() {
     std::string cinResult = "";
     int result = 0;
@@ -41,6 +46,9 @@ void IssueCreator::promptIssueStatus() {
     this->status = (IssueStatus)result;
 }
 
+// 1. Abstraction - The promptIssueType method abstracts the logic for
+// displaying the issue type options, prompting the user to select
+// an option, parsing the result and error handling.
 void IssueCreator::promptIssueType() {
     std::string cinResult = "";
     int result = 0;
@@ -74,6 +82,12 @@ void IssueCreator::promptIssueType() {
     this->type = (IssueType)result;
 }
 
+// 1. Abstraction - The createIssue method is used to abstract the process
+// of creating an Issue.
+// 4. Polymorphic Behaviour - The return type of the createIssue method is
+// an Issue pointer. This means that the method can return a pointer to an
+// Issue or any of it's subclasses (Story, Bug or Epic).
+// 9. Pointers - The createIssue method returns a pointer to an Issue.
 Issue* IssueCreator::createIssue() {
     std::cout << "Enter title: ";
     std::cin >> this->title;
@@ -92,5 +106,5 @@ Issue* IssueCreator::createIssue() {
         return &Epic(this->title, this->description, this->status);
     }
 
-    // TODO: Throw exception
+    throw std::invalid_argument("Invalid issue type.");
 };
