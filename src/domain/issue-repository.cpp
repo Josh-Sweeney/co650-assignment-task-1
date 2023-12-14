@@ -14,6 +14,11 @@ IssueRepository::IssueRepository()
     addIssue(new Epic("Epic 1", "Epic 1 description", IssueStatus::developed));
 }
 
+Issue *IssueRepository::getIssue(int index)
+{
+    return this->issues[index];
+}
+
 // 1. Abstraction - The getIssues method abstracts away the code required
 // to filter the issues array.
 // 2. Encapsulation - The issues array is private and can only be accessed
@@ -83,4 +88,54 @@ void IssueRepository::addIssue(Issue *issue)
 
     this->issues = newIssues;
     this->size++;
+}
+
+// 1. Abstraction - The removeIssue method abstracts away the code required
+// to remove an issue from the issues array.
+// 2. Encapsulation - The issues array is private and can only be manipulated
+// through the removeIssue method.
+void IssueRepository::removeIssue(int index)
+{
+    Issue **newIssues = new Issue *[this->size - 1];
+
+    for (int i = 0; i < this->size; i++)
+    {
+        if (i < index)
+        {
+            newIssues[i] = this->issues[i];
+        }
+        else if (i > index)
+        {
+            newIssues[i - 1] = this->issues[i];
+        }
+    }
+
+    this->issues = newIssues;
+    this->size--;
+}
+
+// 1. Abstraction - The removeIssues method abstracts away the code required
+// to remove issues from the issues array.
+// 2. Encapsulation - The issues array is private and can only be manipulated
+// through the removeIssues method.
+// 10. Functional Pointers - A functional pointer is used here so that the
+// issues can be filtered by a predicate. The predicate is a function is
+// ran for each item in the issues array and returns true or false . If the
+// predicate returns true, the issue is removed from the issues array.
+void IssueRepository::removeIssues(bool (*predicate)(Issue *))
+{
+    Issue **newIssues = new Issue *[this->size];
+    int newIndex = 0;
+
+    for (int i = 0; i < this->size; i++)
+    {
+        if (!predicate(this->issues[i]))
+        {
+            newIssues[newIndex] = this->issues[i];
+            newIndex++;
+        }
+    }
+
+    this->issues = newIssues;
+    this->size = newIndex;
 }
