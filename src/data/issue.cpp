@@ -45,6 +45,38 @@ IssueType Issue::getType()
     return this->type;
 }
 
+// 2. Encapsulation - The title property is protected and can only be read
+// and set within subclasses. Other classes can only set the value through
+// this setTitle method.
+void Issue::setTitle(std::string title)
+{
+    this->title = title;
+}
+
+// 2. Encapsulation - The description property is protected and can only be read
+// and set within subclasses. Other classes can only set the value through
+// this setDescription method.
+void Issue::setDescription(std::string description)
+{
+    this->description = description;
+}
+
+// 2. Encapsulation - The status property is protected and can only be read
+// and set within subclasses. Other classes can only set the value through
+// this setStatus method.
+void Issue::setStatus(IssueStatus status)
+{
+    this->status = status;
+}
+
+// 2. Encapsulation - The type property is protected and can only be read
+// and set within subclasses. Other classes can only set the value through
+// this setType method.
+void Issue::setType(IssueType type)
+{
+    this->type = type;
+}
+
 // 8. Constructors - The Issue constructor is used to initialize the
 // title, description, status and type properties. There is no public
 // constructor for the Issue class because it is an abstract class that

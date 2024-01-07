@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../domain/issue-repository.h"
 #include "../data/issue.h"
 

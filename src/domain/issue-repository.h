@@ -69,6 +69,11 @@ class IssueRepository {
     // to remove an issue from the issues array.
     void removeIssue(int index);
 
+    // 1. Abstraction - The removeIssue method abstracts away the code required
+    // to remove an issue from the issues array.
+    // 9. Pointers - The issue parameter is a pointer to an Issue object.
+    void removeIssue(Issue* issue);
+
     // 1. Abstraction - The removeIssues method abstracts away the code required
     // to remove issues from the issues array based on a predicate.
     // 2. Encapsulation - The issues array is private and can only be accessed

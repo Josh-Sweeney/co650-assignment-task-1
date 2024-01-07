@@ -114,6 +114,26 @@ void IssueRepository::removeIssue(int index)
     this->size--;
 }
 
+// 1. Abstraction - The removeIssue method abstracts away the code required
+// to remove an issue from the issues array.
+// 2. Encapsulation - The issues array is private and can only be manipulated
+// through the removeIssue method.
+// 5. Overloading - The removeIssue method is overloaded so that it can be
+// called with an index or pointer to an existing Issue.
+// 9. Pointers - The issue parameter is a pointer to an Issue object and the
+// issues array is a pointer to an array of Issue pointers.
+void IssueRepository::removeIssue(Issue *issue)
+{
+    for (int i = 0; i < this->size; i++)
+    {
+        if (this->issues[i] == issue)
+        {
+            this->removeIssue(i);
+            return;
+        }
+    }
+}
+
 // 1. Abstraction - The removeIssues method abstracts away the code required
 // to remove issues from the issues array.
 // 2. Encapsulation - The issues array is private and can only be manipulated

@@ -15,12 +15,18 @@ public:
 
     // 2. Encapsulation - The title, description, status and type properties
     // are protected meaning the properties can only be read and set within
-    // subclasses. Other classes can only read the values through the following
+    // subclasses. Other classes can only read and set the values through the 
+    // following getter and setter methods
     // getter methods
     std::string getTitle();
     std::string getDescription();
     IssueStatus getStatus();
     IssueType getType();
+
+    void setTitle(std::string title);
+    void setDescription(std::string description);
+    void setStatus(IssueStatus status);
+    void setType(IssueType type);
 
 protected:
     // 2. Encapsulation - The title, description, status and type properties
