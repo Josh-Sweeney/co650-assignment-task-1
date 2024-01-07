@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../domain/issue-repository.h"
 
 // 1. Abstraction - The IssueLister class is used to abstract the process

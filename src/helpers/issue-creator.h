@@ -1,5 +1,10 @@
 #pragma once
 
+#include <string>
+#include <iostream>
+
+#include "issue-prompter.h"
+
 #include "../data/issue.h"
 #include "../data/story.h"
 #include "../data/bug.h"
@@ -7,7 +12,6 @@
 #include "../data/issue-status.h"
 #include "../data/issue-type.h"
 
-#include <iostream>
 #include "../domain/issue-repository.h"
 
 // 1. Abstraction - The IssueCreator class is used to abstract the 
@@ -34,15 +38,7 @@ class IssueCreator {
         // 2. Encapsulation - The type property is private and can only be accessed
         // through the getType method.
         IssueType type;
-        
-        // 1. Abstraction - The promptIssueTitle method is used to abstract the process
-        // of prompting the user for the status of the Issue.
-        void promptIssueStatus();
-
-        // 1. Abstraction - The promptIssueDescription method is used to abstract the process
-        // of prompting the user for the type of the Issue.
-        void promptIssueType();
-
+    
     public:
         // 8. Constructors - The IssueCreator constructor is used to initialize the
         // title, description, status and type properties. The constructor accepts
