@@ -1,13 +1,29 @@
 #include "data/issue-type.h"
+
 #include "helpers/issue-creator.h"
+#include "helpers/issue-lister.h"
 
 #include "domain/issue-repository.h"
 
 #include <windows.h>
 #include <iostream>
 #include <vector>
+#include <istream>
+#include <string>
 
+// 1. Abstraction - The IssueRepository class is used to abstract the process
+// of storing, retrieving and manipulating Issues.
 IssueRepository repository = IssueRepository();
+
+// 1. Abstraction - The IssueCreator class is used to abstract the process
+// of creating Issues. This is to simplify and reduce the
+// amount of code within the main function to handle this.
+IssueCreator issueCreator = IssueCreator(&repository);
+
+// 1. Abstraction - The IssueLister class is used to abstract the process
+// of listing Issues. This is to simplify and reduce the
+// amount of code within the main function to handle this.
+IssueLister issueLister = IssueLister(&repository);
 
 // 1. Abstraction - The printOptions method is used to abstract the logic for
 // printing the options to the console.
@@ -35,58 +51,6 @@ int getInput()
     return num;
 }
 
-// 1. Abstraction - The addNewIssue method is used to abstract the logic for
-// creating a new issue and adding it to the repository.
-void addNewIssue()
-{
-    IssueCreator creator;
-    repository.addIssue(creator.createIssue());
-}
-
-// 1. Abstraction - The listAllIssues method is used to abstract the logic
-// for printing all issues to the console.
-void listAllIssues()
-{
-    // 9. Pointers - The issues array is a pointer to an array of Issue pointers.
-    Issue **issues = repository.getIssues();
-
-    for (int i = 0; i < repository.getSize(); i++)
-    {
-        // 4. Polymorphic Behaviour - The print method is called on the Issue
-        // pointer. The print method is overridden in all subclasses of Issue
-        // so the behaviour is different depending on the type of issue.
-        issues[i]->print();
-    }
-}
-
-// 1. Abstraction - The openIssuePredicate method is used to abstract the
-// logic for filtering issues by status.
-bool openIssuePredicate(Issue *issue)
-{
-    return issue->getStatus() != IssueStatus::developed || issue->getStatus() != IssueStatus::released;
-}
-
-// 1. Abstraction - The listOpenIssues method is used to abstract the logic
-// for filtering issues by status and printing them to the console.
-void listOpenIssues()
-{
-    int filteredSize = 0;
-
-    // 10. Functional Pointers - A functional pointer is used here so that the
-    // issues can be filtered by a predicate. The predicate is a function is
-    // ran for each item in the issues array and returns true or false . If the
-    // predicate returns true, the issue is added to the result array.
-    Issue **issues = repository.getIssues(filteredSize, *openIssuePredicate);
-
-    for (int i = 0; i < filteredSize; i++)
-    {
-        // 4. Polymorphic Behaviour - The print method is called on the Issue
-        // pointer. The print method is overridden in all subclasses of Issue
-        // so the behaviour is different depending on the type of issue.
-        issues[i]->print();
-    }
-}
-
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
@@ -99,13 +63,13 @@ int main()
         switch (option)
         {
         case 1:
-            addNewIssue();
+            issueCreator.createIssue();
             break;
         case 2:
-            listAllIssues();
+            issueLister.listAllIssues();
             break;
         case 3:
-            listOpenIssues();
+            issueLister.listOpenIssues();
             break;
         default:
             std::cout << "Invalid input. Please enter a number between 1 and 3." << std::endl;

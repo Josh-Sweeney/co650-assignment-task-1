@@ -2,8 +2,12 @@
 #include <string>
 
 // 8. Constructors - The IssueCreator constructor is used to initialize the
-// title, description, status and type properties.
-IssueCreator::IssueCreator() {
+// title, description, status and type properties. The constructor accepts
+// an IssueRepository pointer which is used to add the created Issue to the
+// repository.
+IssueCreator::IssueCreator(IssueRepository* repository) {
+    this-> repository = repository;
+
     this->title = "";
     this->description = "";
     this->status = IssueStatus::none;
@@ -86,11 +90,12 @@ void IssueCreator::promptIssueType() {
 
 // 1. Abstraction - The createIssue method is used to abstract the process
 // of creating an Issue.
-// 4. Polymorphic Behaviour - The return type of the createIssue method is
-// an Issue pointer. This means that the method can return a pointer to an
-// Issue or any of it's subclasses (Story, Bug or Epic).
-// 9. Pointers - The createIssue method returns a pointer to an Issue.
-Issue* IssueCreator::createIssue() {
+// 4. Polymorphic Behaviour - This method determines the type of Issue to
+// create through user input and then initialises either a Bug, Story or Epic
+// which is a subclass of Issue and then adds it to the repository using
+// the addIssue method which accepts an Issue pointer.
+// 9. Pointers - The addIssue method accepts a pointer to an Issue.
+void IssueCreator::createIssue() {
     std::cout << "Enter title: ";
     std::cin >> this->title;
 
@@ -100,13 +105,15 @@ Issue* IssueCreator::createIssue() {
     promptIssueStatus();
     promptIssueType();
 
+    Issue* issue;
+
     if (this->type == IssueType::bug) {
-        return new Bug(this->title, this->description, this->status);
+        issue = new Bug(this->title, this->description, this->status);
     } else if (this->type == IssueType::story) {
-        return new Story(this->title, this->description, this->status);
+        issue = new Story(this->title, this->description, this->status);
     } else if (this->type == IssueType::epic) {
-        return new Epic(this->title, this->description, this->status);
+        issue = new Epic(this->title, this->description, this->status);
     }
 
-    throw std::invalid_argument("Invalid issue type.");
+    this->repository->addIssue(issue);
 };

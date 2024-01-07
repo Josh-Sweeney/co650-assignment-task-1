@@ -20,4 +20,6 @@ add_executable(
     src/domain/issue-repository.cpp
     src/helpers/issue-creator.cpp
     src/helpers/issue-creator.h
+    src/helpers/issue-lister.h
+    src/helpers/issue-lister.cpp
 )
