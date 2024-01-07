@@ -43,6 +43,8 @@ void IssueCreator::promptIssueStatus() {
         }
     } while (result <= 0 || result > 6);
 
+    result = std::stoi(cinResult);
+
     this->status = (IssueStatus)result;
 }
 
