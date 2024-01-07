@@ -2,6 +2,8 @@
 
 #include "helpers/issue-creator.h"
 #include "helpers/issue-lister.h"
+#include "helpers/issue-remover.h"
+
 
 #include "domain/issue-repository.h"
 
@@ -25,6 +27,11 @@ IssueCreator issueCreator = IssueCreator(&repository);
 // amount of code within the main function to handle this.
 IssueLister issueLister = IssueLister(&repository);
 
+// 1. Abstraction - The IssueRemover class is used to abstract the process
+// of removing Issues. This is to simplify and reduce the
+// amount of code within the main function to handle this.
+IssueRemover issueRemover = IssueRemover(&repository);
+
 // 1. Abstraction - The printOptions method is used to abstract the logic for
 // printing the options to the console.
 void printOptions()
@@ -33,6 +40,8 @@ void printOptions()
     std::cout << "1. Create new issue" << std::endl;
     std::cout << "2. List issues" << std::endl;
     std::cout << "3. List open issues" << std::endl;
+    std::cout << "4. Remove issues" << std::endl;
+    std::cout << "5. Remove closed issues" << std::endl;
 }
 
 // 1. Abstraction - The getInput method is used to abstract the logic for
@@ -71,8 +80,14 @@ int main()
         case 3:
             issueLister.listOpenIssues();
             break;
+        case 4:
+            issueRemover.removeIssues();
+            break;
+        case 5:
+            issueRemover.removeClosedIssues();
+            break;
         default:
-            std::cout << "Invalid input. Please enter a number between 1 and 3." << std::endl;
+            std::cout << "Invalid input. Please enter a number between 1 and 5." << std::endl;
             continue;
         }
     } while (true);

@@ -22,4 +22,6 @@ add_executable(
     src/helpers/issue-creator.h
     src/helpers/issue-lister.h
     src/helpers/issue-lister.cpp
+    src/helpers/issue-remover.h
+    src/helpers/issue-remover.cpp
 )
