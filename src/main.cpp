@@ -13,30 +13,6 @@
 #include <istream>
 #include <string>
 
-// 1. Abstraction - The IssueRepository class is used to abstract the process
-// of storing, retrieving and manipulating Issues.
-IssueRepository repository = IssueRepository();
-
-// 1. Abstraction - The IssueCreator class is used to abstract the process
-// of creating Issues. This is to simplify and reduce the
-// amount of code within the main function to handle this.
-IssueCreator issueCreator = IssueCreator(&repository);
-
-// 1. Abstraction - The IssueLister class is used to abstract the process
-// of listing Issues. This is to simplify and reduce the
-// amount of code within the main function to handle this.
-IssueLister issueLister = IssueLister(&repository);
-
-// 1. Abstraction - The IssueRemover class is used to abstract the process
-// of removing Issues. This is to simplify and reduce the
-// amount of code within the main function to handle this.
-IssueRemover issueRemover = IssueRemover(&repository);
-
-// 1. Abstraction - The IssueEditor class is used to abstract the process
-// of editing Issues. This is to simplify and reduce the
-// amount of code within the main function to handle this.
-IssueEditor issueEditor = IssueEditor(&repository);
-
 // 1. Abstraction - The printOptions method is used to abstract the logic for
 // printing the options to the console.
 void printOptions()
@@ -73,6 +49,30 @@ int getInput()
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
+
+    // 1. Abstraction - The IssueRepository class is used to abstract the process
+    // of storing, retrieving and manipulating Issues.
+    IssueRepository repository = IssueRepository();
+
+    // 1. Abstraction - The IssueCreator class is used to abstract the process
+    // of creating Issues. This is to simplify and reduce the
+    // amount of code within the main function to handle this.
+    IssueCreator issueCreator = IssueCreator(&repository);
+
+    // 1. Abstraction - The IssueLister class is used to abstract the process
+    // of listing Issues. This is to simplify and reduce the
+    // amount of code within the main function to handle this.
+    IssueLister issueLister = IssueLister(&repository);
+
+    // 1. Abstraction - The IssueRemover class is used to abstract the process
+    // of removing Issues. This is to simplify and reduce the
+    // amount of code within the main function to handle this.
+    IssueRemover issueRemover = IssueRemover(&repository);
+
+    // 1. Abstraction - The IssueEditor class is used to abstract the process
+    // of editing Issues. This is to simplify and reduce the
+    // amount of code within the main function to handle this.
+    IssueEditor issueEditor = IssueEditor(&repository);
 
     do
     {
