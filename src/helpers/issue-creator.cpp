@@ -99,11 +99,11 @@ Issue* IssueCreator::createIssue() {
     promptIssueType();
 
     if (this->type == IssueType::bug) {
-        return &Bug(this->title, this->description, this->status);
+        return new Bug(this->title, this->description, this->status);
     } else if (this->type == IssueType::story) {
-        return &Story(this->title, this->description, this->status);
+        return new Story(this->title, this->description, this->status);
     } else if (this->type == IssueType::epic) {
-        return &Epic(this->title, this->description, this->status);
+        return new Epic(this->title, this->description, this->status);
     }
 
     throw std::invalid_argument("Invalid issue type.");
