@@ -32,7 +32,7 @@ void IssueCreator::createIssue() {
     this->status = IssuePrompter::promptIssueStatus();
     this->type = IssuePrompter::promptIssueType();
 
-    Issue* issue;
+    Issue* issue = nullptr;
 
     if (this->type == IssueType::bug) {
         issue = new Bug(this->title, this->description, this->status);
