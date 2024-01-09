@@ -4,6 +4,8 @@ This repository contains the source code for my CO650 task 1 submission.
 
 ### Class Diagram
 
+![Class Diagram](./assets/class-diagram.png)
+
 ## How To Run
 
 ### Visual Studio
