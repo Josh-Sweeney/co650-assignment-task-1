@@ -35,6 +35,8 @@ class IssueRepository {
 
     // 1. Abstraction - The getIssues method abstracts away the code required
     // to filter the issues array.
+    // 5. Overloading - The getIssues method is overloaded so that it can be
+    // called with or without a predicate.
     // 2. Encapsulation - The issues array is private and can only be accessed
     // through the getIssues method.
     Issue** getIssues();
@@ -70,12 +72,16 @@ class IssueRepository {
     // to remove an issue from the issues array.
     // 2. Encapsulation - The issues array is private and can only be accessed
     // through the removeIssue method.
+    // 5. Overloading - The removeIssue method is overloaded so that it can be
+    // called with or without an index.
     void removeIssue(int index);
 
     // 1. Abstraction - The removeIssue method abstracts away the code required
     // to remove an issue from the issues array.
     // 2. Encapsulation - The issues array is private and can only be accessed
     // through the removeIssue method.
+    // 5. Overloading - The removeIssue method is overloaded so that it can be
+    // called with or without an index.
     // 9. Pointers - The issue parameter is a pointer to an Issue object.
     void removeIssue(Issue* issue);
 
