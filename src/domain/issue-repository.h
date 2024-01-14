@@ -5,7 +5,6 @@
 #include "../data/epic.h"
 #include "../data/story.h"
 
-
 // 1. Abstraction - The IssueRepository class exists to abstract the
 // retrieval and manipulation of issues away from the user. In this
 // case, issues are stored within a private array and can only be
@@ -62,15 +61,21 @@ class IssueRepository {
 
     // 1. Abstraction - The addIssue method abstracts away the code required
     // to add an issue to the issues array.
+    // 2. Encapsulation - The issues array is private and can only be accessed
+    // through the addIssue method.
     // 9. Pointers - The issue parameter is a pointer to an Issue object.
     void addIssue(Issue* issue);
 
     // 1. Abstraction - The removeIssue method abstracts away the code required
     // to remove an issue from the issues array.
+    // 2. Encapsulation - The issues array is private and can only be accessed
+    // through the removeIssue method.
     void removeIssue(int index);
 
     // 1. Abstraction - The removeIssue method abstracts away the code required
     // to remove an issue from the issues array.
+    // 2. Encapsulation - The issues array is private and can only be accessed
+    // through the removeIssue method.
     // 9. Pointers - The issue parameter is a pointer to an Issue object.
     void removeIssue(Issue* issue);
 
