@@ -38,7 +38,7 @@ void IssueRemover::removeClosedIssues()
 
     for (int i = 0; i < filteredSize; i++)
     {
-        this->repository->removeIssue(i);
+        this->repository->removeIssue(issues[i]);
     }
 
     std::cout << "Issues removed." << std::endl;
@@ -101,12 +101,12 @@ void IssueRemover::removeIssues()
     {
         result = this->getIssueToRemove();
 
-        this->repository->removeIssue(result - 1); // Account for 0 indexing
-
         if (result == 0)
         {
             return;
         }
+
+        this->repository->removeIssue(result - 1); // Account for 0 indexing
 
     } while (result != 0);
 }
